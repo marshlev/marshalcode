@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forum Jasa SA-MP Developer</title>
 
+<!-- GOOGLE FONT (AMAN) -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#0b0204;
@@ -15,34 +18,69 @@
   --muted:#b9b9b9;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,Arial}
-
-body{
-  background:radial-gradient(circle at top, #24070c, var(--bg));
-  color:var(--text);
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Poppins,Arial,sans-serif;
 }
 
-/* HEADER */
+body{
+  background:
+    radial-gradient(circle at top, #24070c, var(--bg)),
+    radial-gradient(circle at bottom, rgba(220,38,38,.08), transparent);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ================= FLOATING PARTICLES ================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(220,38,38,.4), transparent),
+    radial-gradient(2px 2px at 80% 70%, rgba(220,38,38,.3), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(220,38,38,.25), transparent);
+  animation:floatBG 12s linear infinite;
+  pointer-events:none;
+}
+@keyframes floatBG{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-40px)}
+  100%{transform:translateY(0)}
+}
+
+/* ================= HEADER ================= */
 header{
-  padding:70px 20px;
+  padding:90px 20px;
   text-align:center;
 }
 header h1{
-  font-size:42px;
+  font-family:Orbitron,sans-serif;
+  font-size:44px;
+  letter-spacing:2px;
   color:var(--accent);
-  text-shadow:0 0 30px rgba(220,38,38,.9);
+  text-shadow:0 0 35px rgba(220,38,38,1);
 }
 header p{
   color:var(--muted);
-  margin-top:12px;
+  margin-top:14px;
   font-size:15px;
 }
 
-/* SECTION */
+/* ================= SECTION ================= */
 .section{
   max-width:1150px;
-  margin:60px auto;
+  margin:80px auto;
   padding:0 20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.section.show{
+  opacity:1;
+  transform:translateY(0);
 }
 .section h2{
   margin-bottom:22px;
@@ -50,28 +88,28 @@ header p{
   text-shadow:0 0 18px rgba(220,38,38,.6);
 }
 
-/* CARD */
+/* ================= CARD ================= */
 .card{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:18px;
   padding:22px;
   box-shadow:0 0 35px rgba(220,38,38,.25);
-  transition:.3s;
+  transition:.35s;
 }
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 55px rgba(220,38,38,.6);
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 0 60px rgba(220,38,38,.75);
 }
 
-/* JASA */
+/* ================= JASA ================= */
 .jasa{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:22px;
 }
 
-/* SKILL */
+/* ================= SKILL ================= */
 .skill{margin-bottom:18px}
 .skill-name{
   display:flex;
@@ -89,11 +127,11 @@ header p{
   height:100%;
   width:0;
   background:var(--accent);
-  box-shadow:0 0 15px rgba(220,38,38,.9);
-  transition:1.6s;
+  box-shadow:0 0 18px rgba(220,38,38,1);
+  transition:2s;
 }
 
-/* PACKAGE */
+/* ================= PACKAGE ================= */
 .packages{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -106,10 +144,16 @@ header p{
   padding:24px;
   box-shadow:0 0 35px rgba(220,38,38,.25);
 }
-.package h3{color:var(--accent)}
-.price{font-size:26px;margin:12px 0}
+.package h3{
+  color:var(--accent);
+  font-family:Orbitron,sans-serif;
+}
+.price{
+  font-size:26px;
+  margin:12px 0;
+}
 
-/* FAQ */
+/* ================= FAQ ================= */
 .faq{
   border-bottom:1px solid var(--line);
   padding:14px 0;
@@ -122,13 +166,13 @@ header p{
 }
 .faq.active p{display:block}
 
-/* PROGRESS */
+/* ================= PROGRESS ================= */
 .progress-box{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:18px;
   padding:22px;
-  box-shadow:0 0 35px rgba(220,38,38,.35);
+  box-shadow:0 0 45px rgba(220,38,38,.5);
 }
 .progress-bar{
   height:10px;
@@ -141,73 +185,74 @@ header p{
   height:100%;
   width:0;
   background:var(--accent);
-  box-shadow:0 0 18px rgba(220,38,38,1);
+  box-shadow:0 0 22px rgba(220,38,38,1);
   transition:2s;
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
 .profile-dev{
   text-align:center;
 }
 .profile-dev h2{
-  font-size:34px;
+  font-family:Orbitron,sans-serif;
+  font-size:36px;
 }
 .profile-dev p{
   max-width:760px;
-  margin:14px auto;
+  margin:16px auto;
   color:var(--muted);
   font-size:15px;
 }
 
-/* ORDER BUTTON */
+/* ================= BUTTON ================= */
 .order-btn{
   display:inline-block;
-  margin-top:24px;
-  padding:14px 36px;
+  margin-top:28px;
+  padding:14px 40px;
   background:var(--accent);
   color:white;
   border-radius:40px;
   text-decoration:none;
   font-weight:bold;
-  box-shadow:0 0 35px rgba(220,38,38,.9);
-  transition:.3s;
+  box-shadow:0 0 40px rgba(220,38,38,1);
+  transition:.35s;
 }
 .order-btn:hover{
-  transform:scale(1.07);
-  box-shadow:0 0 55px rgba(220,38,38,1);
+  transform:scale(1.1);
+  box-shadow:0 0 70px rgba(220,38,38,1);
 }
 
-/* TESTIMONI */
+/* ================= TESTIMONI ================= */
 .testimoni{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:16px;
   padding:18px;
   margin-bottom:14px;
-  box-shadow:0 0 25px rgba(220,38,38,.25);
+  box-shadow:0 0 30px rgba(220,38,38,.35);
 }
 
-/* ADMIN */
-.admin-panel{
-  display:none;
-  background:#120203;
-  border:1px dashed var(--accent);
-  border-radius:18px;
-  padding:22px;
+/* ================= GLOW ICON ================= */
+.glow-icon{
+  display:inline-block;
+  margin-right:10px;
+  color:var(--accent);
+  animation:glowPulse 2s infinite ease-in-out;
 }
-.admin-panel input,.admin-panel button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  background:#1a0205;
-  border:1px solid var(--line);
-  color:white;
+.glow-delay-1{animation-delay:.3s}
+.glow-delay-2{animation-delay:.6s}
+.glow-delay-3{animation-delay:.9s}
+
+@keyframes glowPulse{
+  0%{opacity:.6;text-shadow:0 0 8px rgba(220,38,38,.4)}
+  50%{opacity:1;text-shadow:0 0 18px rgba(220,38,38,1),0 0 30px rgba(220,38,38,.7)}
+  100%{opacity:.6;text-shadow:0 0 8px rgba(220,38,38,.4)}
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer{
   text-align:center;
-  padding:40px;
+  padding:50px;
   color:var(--muted);
   font-size:14px;
 }
@@ -217,17 +262,17 @@ footer{
 <body>
 
 <header>
-  <h1>Forum Jasa SA-MP Developer</h1>
-  <p>Script • Mapping • Web • Discord Bot</p>
+  <h1>SA-MP DEVELOPER FORUM</h1>
+  <p>Elite Script • Mapping • Web • Discord Bot</p>
 </header>
 
 <section class="section">
-  <h2>📌 Jasa Unggulan</h2>
+  <h2><span class="glow-icon glow-delay-1">◆</span>Jasa Unggulan</h2>
   <div class="jasa" id="jasaList"></div>
 </section>
 
 <section class="section">
-  <h2>🛠 Skill Developer</h2>
+  <h2><span class="glow-icon glow-delay-2">▣</span>Skill Developer</h2>
 
   <div class="skill">
     <div class="skill-name"><span>SA-MP Pawn</span><span>90%</span></div>
@@ -250,67 +295,16 @@ footer{
   </div>
 </section>
 
-<section class="section">
-  <h2>💰 Paket Jasa</h2>
-  <div class="packages">
-    <div class="package">
-      <h3>Basic</h3>
-      <div class="price">Rp 300K</div>
-      <p>✔ Script basic<br>✔ Support 3 hari</p>
-    </div>
-    <div class="package">
-      <h3>Standard</h3>
-      <div class="price">Rp 800K</div>
-      <p>✔ Script RP<br>✔ Mapping<br>✔ Support 7 hari</p>
-    </div>
-    <div class="package">
-      <h3>Premium</h3>
-      <div class="price">Rp 1.500K</div>
-      <p>✔ Full system<br>✔ Custom feature<br>✔ Support 30 hari</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>❓ FAQ</h2>
-  <div class="faq"><strong>Berapa lama pengerjaan?</strong><p>3–14 hari tergantung paket.</p></div>
-  <div class="faq"><strong>Bisa custom?</strong><p>Bisa, dibahas sebelum deal.</p></div>
-  <div class="faq"><strong>Aman & trusted?</strong><p>Progress transparan & rapi.</p></div>
-</section>
-
-<section class="section">
-  <h2>⏱ Status Pengerjaan</h2>
-  <div class="progress-box">
-    <p>Status: <b id="status">In Progress</b></p>
-    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
-    <p>Waktu ngoding: <b id="timer">0</b> menit</p>
-  </div>
-</section>
-
 <section class="section profile-dev">
   <h2>Andra Lutfiansyah Marshal</h2>
   <p>
-    SA-MP Developer yang membangun sistem dengan logika, stabilitas,
-    dan tanggung jawab. Bukan sekadar bikin jalan,
-    tapi bikin sistem yang dipakai lama.
+    SA-MP Developer yang fokus pada sistem jangka panjang,
+    performa stabil, dan struktur rapi.
+    Bukan sekadar coding, tapi membangun fondasi server.
   </p>
   <a class="order-btn" href="https://wa.me/62XXXXXXXXXX" target="_blank">
-    💬 Order Sekarang
+    Order Sekarang
   </a>
-</section>
-
-<section class="section">
-  <h2>⭐ Testimoni Client</h2>
-  <div class="testimoni"><b>Rizky</b><p>Script rapi & anti bug.</p></div>
-  <div class="testimoni"><b>Dimas</b><p>Mapping detail & sesuai request.</p></div>
-  <div class="testimoni"><b>Farhan</b><p>Developer niat & profesional.</p></div>
-</section>
-
-<section class="section admin-panel" id="adminPanel">
-  <h2>🛠 Admin Mode</h2>
-  <input id="newTitle" placeholder="Judul Jasa">
-  <input id="newDesc" placeholder="Deskripsi Jasa">
-  <button onclick="addJasa()">Tambah Jasa</button>
 </section>
 
 <footer>
@@ -318,9 +312,10 @@ footer{
 </footer>
 
 <script>
+/* ===== DATA ===== */
 const jasaData=[
   {title:"Script Roleplay",desc:"Full system RP SA-MP"},
-  {title:"Mapping Custom",desc:"Interior & exterior"},
+  {title:"Mapping Custom",desc:"Interior & exterior detail"},
   {title:"Discord Bot",desc:"Bot komunitas SA-MP"}
 ];
 
@@ -333,49 +328,21 @@ jasaData.forEach(j=>{
     </div>`;
 });
 
-// SKILL
+/* ===== SKILL ANIM ===== */
 document.querySelectorAll(".skill-fill").forEach(el=>{
-  setTimeout(()=>el.style.width=el.dataset.skill+"%",500);
+  setTimeout(()=>el.style.width=el.dataset.skill+"%",600);
 });
 
-// FAQ
-document.querySelectorAll(".faq").forEach(f=>{
-  f.onclick=()=>f.classList.toggle("active");
-});
-
-// PROGRESS
-let time=0;
-const timer=setInterval(()=>{
-  time++;
-  document.getElementById("timer").innerText=time;
-  document.getElementById("progress").style.width=Math.min(time,100)+"%";
-  if(time>=100){
-    document.getElementById("status").innerText="Completed";
-    clearInterval(timer);
-  }
-},200);
-
-// ADMIN MODE (Enter → admin123)
-document.addEventListener("keydown",e=>{
-  if(e.key==="Enter"){
-    const pass=prompt("Admin password?");
-    if(pass==="admin123"){
-      document.getElementById("adminPanel").style.display="block";
-      alert("Admin mode aktif");
+/* ===== SCROLL REVEAL ===== */
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    const top=sec.getBoundingClientRect().top;
+    if(top<window.innerHeight-120){
+      sec.classList.add("show");
     }
-  }
+  });
 });
-
-function addJasa(){
-  const t=newTitle.value;
-  const d=newDesc.value;
-  if(!t||!d)return alert("Isi semua");
-  jasaList.innerHTML+=`
-    <div class="card">
-      <h3>${t}</h3>
-      <p>${d}</p>
-    </div>`;
-}
 </script>
 
 </body>

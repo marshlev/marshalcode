@@ -3,345 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forum Jasa SA-MP Developer</title>
-
-<!-- GOOGLE FONT (AMAN) -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>Andra Marshal • SA-MP Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0204;
-  --card:#140305;
-  --accent:#dc2626;
-  --line:#2a0508;
-  --text:#f5f5f5;
-  --muted:#b9b9b9;
+  --bg:#0e0e11;
+  --card:#15151b;
+  --accent:#c9a24d;
+  --line:#26262f;
+  --text:#eaeaea;
+  --muted:#a1a1aa;
 }
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Poppins,Arial,sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,Arial;}
 body{
   background:
-    radial-gradient(circle at top, #24070c, var(--bg)),
-    radial-gradient(circle at bottom, rgba(220,38,38,.08), transparent);
+    radial-gradient(circle at 20% 20%, rgba(201,162,77,.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(201,162,77,.05), transparent 40%),
+    var(--bg);
   color:var(--text);
+  letter-spacing:.2px;
   overflow-x:hidden;
 }
-
-/* ================= FLOATING PARTICLES ================= */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(2px 2px at 20% 30%, rgba(220,38,38,.4), transparent),
-    radial-gradient(2px 2px at 80% 70%, rgba(220,38,38,.3), transparent),
-    radial-gradient(1px 1px at 50% 50%, rgba(220,38,38,.25), transparent);
-  animation:floatBG 12s linear infinite;
+/* CLICK GLOW */
+.click-glow{
+  position:fixed;width:12px;height:12px;
+  border-radius:50%;
   pointer-events:none;
+  background:rgba(201,162,77,.6);
+  box-shadow:0 0 40px rgba(201,162,77,.8);
+  transform:translate(-50%,-50%);
+  animation:fadeGlow .6s ease forwards;
+  z-index:1000;
 }
-@keyframes floatBG{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-40px)}
-  100%{transform:translateY(0)}
-}
+@keyframes fadeGlow{from{opacity:1}to{opacity:0}}
 
-/* ================= HEADER ================= */
-header{
-  padding:90px 20px;
-  text-align:center;
-}
-header h1{
-  font-family:Orbitron,sans-serif;
-  font-size:44px;
-  letter-spacing:2px;
-  color:var(--accent);
-  text-shadow:0 0 35px rgba(220,38,38,1);
-}
-header p{
-  color:var(--muted);
-  margin-top:14px;
-  font-size:15px;
-}
+/* GLOW ICON */
+.glow{display:inline-block;animation:blink 1.2s infinite alternate;}
+@keyframes blink{0%{filter:drop-shadow(0 0 2px #c9a24d);}50%{filter:drop-shadow(0 0 12px #f5d07a);}100%{filter:drop-shadow(0 0 2px #c9a24d);}}
+.skill img{filter:drop-shadow(0 0 8px rgba(201,162,77,.7));animation:blink 1.5s infinite alternate;}
 
-/* ================= SECTION ================= */
-.section{
-  max-width:1150px;
-  margin:80px auto;
-  padding:0 20px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-.section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-.section h2{
-  margin-bottom:22px;
-  color:var(--accent);
-  text-shadow:0 0 18px rgba(220,38,38,.6);
-}
+/* HEADER */
+header{padding:60px 20px;text-align:center;}
+header h1{font-size:30px;color:var(--accent);}
+header p{margin-top:10px;font-size:14px;color:var(--muted);}
 
-/* ================= CARD ================= */
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 0 35px rgba(220,38,38,.25);
-  transition:.35s;
-}
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 0 60px rgba(220,38,38,.75);
-}
+/* SECTION */
+.section{max-width:1080px;margin:50px auto;padding:0 20px;}
+.section h2{font-size:20px;margin-bottom:18px;color:var(--accent);}
 
-/* ================= JASA ================= */
-.jasa{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:22px;
-}
+/* CARD */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:.3s;}
+.card:hover{box-shadow:0 0 25px rgba(201,162,77,.25);}
 
-/* ================= SKILL ================= */
-.skill{margin-bottom:18px}
-.skill-name{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-}
-.skill-bar{
-  background:#1a0205;
-  height:10px;
-  border-radius:10px;
-  overflow:hidden;
-  margin-top:6px;
-}
-.skill-fill{
-  height:100%;
-  width:0;
-  background:var(--accent);
-  box-shadow:0 0 18px rgba(220,38,38,1);
-  transition:2s;
-}
+/* GRID */
+.jasa,.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
 
-/* ================= PACKAGE ================= */
-.packages{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
-}
-.package{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:24px;
-  box-shadow:0 0 35px rgba(220,38,38,.25);
-}
-.package h3{
-  color:var(--accent);
-  font-family:Orbitron,sans-serif;
-}
-.price{
-  font-size:26px;
-  margin:12px 0;
-}
+/* SKILL */
+.skill{margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.skill b{font-size:13px;}
+.skill-bar{height:8px;background:#1b1b22;border-radius:10px;overflow:hidden;margin-top:6px;}
+.skill-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#f5d07a);transition:1.5s;}
 
-/* ================= FAQ ================= */
-.faq{
-  border-bottom:1px solid var(--line);
-  padding:14px 0;
-  cursor:pointer;
-}
-.faq p{
-  display:none;
-  color:var(--muted);
-  margin-top:8px;
-}
-.faq.active p{display:block}
+/* PACKAGE */
+.package h3{font-size:16px}
+.price{font-size:22px;margin:10px 0;}
+.small{font-size:12px;color:var(--muted);}
 
-/* ================= PROGRESS ================= */
-.progress-box{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 0 45px rgba(220,38,38,.5);
-}
-.progress-bar{
-  height:10px;
-  background:#1a0205;
-  border-radius:10px;
-  overflow:hidden;
-  margin:12px 0;
-}
-.progress-fill{
-  height:100%;
-  width:0;
-  background:var(--accent);
-  box-shadow:0 0 22px rgba(220,38,38,1);
-  transition:2s;
-}
+/* PAYMENT */
+.pay{display:flex;justify-content:center;gap:16px;margin-top:10px;}
+.pay img{width:40px;filter:drop-shadow(0 0 8px rgba(201,162,77,.4));}
 
-/* ================= PROFILE ================= */
-.profile-dev{
-  text-align:center;
-}
-.profile-dev h2{
-  font-family:Orbitron,sans-serif;
-  font-size:36px;
-}
-.profile-dev p{
-  max-width:760px;
-  margin:16px auto;
-  color:var(--muted);
-  font-size:15px;
-}
+/* WELCOME TEXT */
+.welcome{font-size:12px;color:var(--muted);line-height:1.8;max-width:760px;margin:auto;text-align:center;}
 
-/* ================= BUTTON ================= */
-.order-btn{
-  display:inline-block;
-  margin-top:28px;
-  padding:14px 40px;
-  background:var(--accent);
-  color:white;
-  border-radius:40px;
-  text-decoration:none;
-  font-weight:bold;
-  box-shadow:0 0 40px rgba(220,38,38,1);
-  transition:.35s;
-}
-.order-btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 70px rgba(220,38,38,1);
-}
+/* FAQ */
+.faq{border-bottom:1px solid var(--line);padding:12px 0;cursor:pointer;}
+.faq b{font-size:13px;}
+.faq p{display:none;margin-top:6px;font-size:12px;color:var(--muted);}
+.faq.active p{display:block;}
 
-/* ================= TESTIMONI ================= */
-.testimoni{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:14px;
-  box-shadow:0 0 30px rgba(220,38,38,.35);
-}
+/* PROGRESS */
+.progress-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;}
+.progress-bar{height:8px;background:#1b1b22;border-radius:10px;overflow:hidden;margin:10px 0;}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#f5d07a);transition:2s;}
 
-/* ================= GLOW ICON ================= */
-.glow-icon{
-  display:inline-block;
-  margin-right:10px;
-  color:var(--accent);
-  animation:glowPulse 2s infinite ease-in-out;
-}
-.glow-delay-1{animation-delay:.3s}
-.glow-delay-2{animation-delay:.6s}
-.glow-delay-3{animation-delay:.9s}
+/* PROFILE */
+.profile-dev{text-align:center}
+.profile-dev h2{font-size:26px}
+.profile-dev p{max-width:720px;margin:12px auto;font-size:14px;color:var(--muted);}
 
-@keyframes glowPulse{
-  0%{opacity:.6;text-shadow:0 0 8px rgba(220,38,38,.4)}
-  50%{opacity:1;text-shadow:0 0 18px rgba(220,38,38,1),0 0 30px rgba(220,38,38,.7)}
-  100%{opacity:.6;text-shadow:0 0 8px rgba(220,38,38,.4)}
-}
-
-/* ================= FOOTER ================= */
-footer{
-  text-align:center;
-  padding:50px;
-  color:var(--muted);
-  font-size:14px;
-}
+/* BUTTON */
+.order-btn{display:inline-block;margin-top:20px;padding:12px 32px;background:var(--accent);color:#111;border-radius:40px;text-decoration:none;font-weight:600;transition:.3s;}
+.order-btn:hover{transform:scale(1.05)}
 </style>
 </head>
-
 <body>
 
 <header>
-  <h1>SA-MP DEVELOPER FORUM</h1>
-  <p>Elite Script • Mapping • Web • Discord Bot</p>
+  <h1>Forum Jasa SA-MP Developer <img src="images/flash.png" class="glow" alt="flash"></h1>
+  <p>Clean System • Long-Term Use • Trusted Progress</p>
 </header>
 
 <section class="section">
-  <h2><span class="glow-icon glow-delay-1">◆</span>Jasa Unggulan</h2>
+  <h2>️♦ Jasa Unggulan</h2>
   <div class="jasa" id="jasaList"></div>
 </section>
 
 <section class="section">
-  <h2><span class="glow-icon glow-delay-2">▣</span>Skill Developer</h2>
-
+    <h2>♦ Skill</h2>
   <div class="skill">
-    <div class="skill-name"><span>SA-MP Pawn</span><span>90%</span></div>
+    <img src="images/html.png" alt="HTML Logo"><b>HTML</b>
     <div class="skill-bar"><div class="skill-fill" data-skill="90"></div></div>
   </div>
-
   <div class="skill">
-    <div class="skill-name"><span>Mapping</span><span>75%</span></div>
+    <img src="images/css.png" alt="CSS Logo"><b>CSS</b>
+    <div class="skill-bar"><div class="skill-fill" data-skill="85"></div></div>
+  </div>
+  <div class="skill">
+    <img src="images/js.png" alt="JS Logo"><b>JavaScript</b>
     <div class="skill-bar"><div class="skill-fill" data-skill="75"></div></div>
   </div>
-
   <div class="skill">
-    <div class="skill-name"><span>Web Developer</span><span>70%</span></div>
+    <img src="images/python.png" alt="Python Logo"><b>Python</b>
     <div class="skill-bar"><div class="skill-fill" data-skill="70"></div></div>
   </div>
+</section>
 
-  <div class="skill">
-    <div class="skill-name"><span>Discord Bot</span><span>65%</span></div>
-    <div class="skill-bar"><div class="skill-fill" data-skill="65"></div></div>
+<section class="section">
+  <h2>♦ Paket Jasa</h2>
+  <div class="packages">
+    <div class="card"><img src="images/basic.png" alt="Basic Icon"><h3>Basic</h3><div class="price">Rp300K</div><div class="small">Script basic + support</div></div>
+    <div class="card"><img src="images/standard.png" alt="Standard Icon"><h3>Standard</h3><div class="price">Rp800K</div><div class="small">RP + Mapping</div></div>
+    <div class="card"><img src="images/premium.png" alt="Premium Icon"><h3>Premium</h3><div class="price">Rp1.5JT</div><div class="small">Full custom</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>❓ Pertanyaan Umum</h2>
+  <div class="faq"><b>Berapa lama pengerjaan?</b><p>3–14 hari tergantung scope.</p></div>
+  <div class="faq"><b>Bisa custom?</b><p>Bisa full sesuai request.</p></div>
+  <div class="faq"><b>Aman?</b><p>Progress transparan & testing.</p></div>
+</section>
+
+<section class="section">
+  <h2>⏱ Status Pengerjaan</h2>
+  <div class="progress-box">
+    <p>Status: <b id="status">In Progress</b></p>
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    <p>Waktu ngoding: <b id="timer">0</b> menit</p>
   </div>
 </section>
 
 <section class="section profile-dev">
   <h2>Andra Lutfiansyah Marshal</h2>
-  <p>
-    SA-MP Developer yang fokus pada sistem jangka panjang,
-    performa stabil, dan struktur rapi.
-    Bukan sekadar coding, tapi membangun fondasi server.
-  </p>
-  <a class="order-btn" href="https://wa.me/62XXXXXXXXXX" target="_blank">
-    Order Sekarang
-  </a>
+  <p>Developer fokus sistem stabil & bisa dipakai lama, bukan sekadar jalan.</p>
+  <a class="order-btn" href="https://wa.me/62XXXXXXXXXX">Order Sekarang</a>
 </section>
 
-<footer>
-  © 2026 Andra Lutfiansyah Marshal • SA-MP Developer
-</footer>
+<section class="section">
+  <div class="card welcome">
+    Selamat datang. Di sini bukan janji manis, tapi sistem yang bisa dipakai lama, dikembangin, & rapi. Setiap baris kode dibuat untuk stabil & siap dikembangkan.
+  </div>
+</section>
+
+<section class="section">
+  <h2>♦ Cara Gue Kerja</h2>
+  <div class="card">
+    <p>• Diskusi tanpa tekanan</p>
+    <p>• Scope jelas sebelum coding</p>
+    <p>• Progress bisa dicek</p>
+    <p>• Hasil rapi & bisa dikembangkan</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>✴️ Metode Pembayaran</h2>
+  <div class="pay">
+    <img src="images/qris.png" alt="QRIS">
+    <img src="images/bca.png" alt="BCA">
+    <img src="images/gopay.png" alt="GoPay">
+  </div>
+</section>
+
+<section class="section">
+  <div class="card" style="border:1px solid var(--accent)">
+    <p>⚠❗ Tidak menerima project kalau belum jelas. Clean logic & testing.</p>
+  </div>
+</section>
+
+<section class="section" style="text-align:center">
+  <p style="font-size:14px;color:var(--muted);line-height:1.7">
+    Kalau lu nyari developer yang bisa diajak mikir, bukan cuma ngetik kode — kita satu frekuensi.
+  </p>
+  <a class="order-btn" href="https://wa.me/62XXXXXXXXXX">Mulai Diskusi</a>
+</section>
+
+<footer>© 2026 Andra Lutfiansyah Marshal • SA-MP Developer</footer>
 
 <script>
-/* ===== DATA ===== */
 const jasaData=[
-  {title:"Script Roleplay",desc:"Full system RP SA-MP"},
+  {title:"Script Roleplay",desc:"System RP clean & scalable"},
   {title:"Mapping Custom",desc:"Interior & exterior detail"},
   {title:"Discord Bot",desc:"Bot komunitas SA-MP"}
 ];
-
 const jasaList=document.getElementById("jasaList");
 jasaData.forEach(j=>{
-  jasaList.innerHTML+=`
-    <div class="card">
-      <h3>${j.title}</h3>
-      <p>${j.desc}</p>
-    </div>`;
+  jasaList.innerHTML+=`<div class="card"><h3>${j.title}</h3><p>${j.desc}</p></div>`;
 });
 
-/* ===== SKILL ANIM ===== */
+// SKILL
 document.querySelectorAll(".skill-fill").forEach(el=>{
-  setTimeout(()=>el.style.width=el.dataset.skill+"%",600);
+  setTimeout(()=>el.style.width=el.dataset.skill+"%",400);
 });
 
-/* ===== SCROLL REVEAL ===== */
-const sections=document.querySelectorAll(".section");
-window.addEventListener("scroll",()=>{
-  sections.forEach(sec=>{
-    const top=sec.getBoundingClientRect().top;
-    if(top<window.innerHeight-120){
-      sec.classList.add("show");
-    }
-  });
+// FAQ
+document.querySelectorAll(".faq").forEach(f=>{f.onclick=()=>f.classList.toggle("active");});
+
+// PROGRESS
+let time=0;
+const timerInterval=setInterval(()=>{
+  time++;
+  document.getElementById("timer").innerText=time;
+  document.getElementById("progress").style.width=Math.min(time,100)+"%";
+  if(time>=100){document.getElementById("status").innerText="Completed"; clearInterval(timerInterval);}
+},200);
+
+// CLICK GLOW
+document.addEventListener("click",e=>{
+  const glow=document.createElement("div");
+  glow.className="click-glow";
+  glow.style.left=e.clientX+"px";
+  glow.style.top=e.clientY+"px";
+  document.body.appendChild(glow);
+  setTimeout(()=>glow.remove(),600);
 });
 </script>
 

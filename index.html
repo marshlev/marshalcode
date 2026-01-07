@@ -3,241 +3,735 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Andra Marshal • SA-MP Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Marshal Dev | SA:MP Developer</title>
+
+<!-- SEO TAMBAHAN (AMAN) -->
+<meta name="author" content="Marshal Dev">
+<meta name="keywords" content="SA:MP Developer, RP System, Pawn, OpenMP, Game Server Developer">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#0e0e11;
-  --card:#15151b;
-  --accent:#c9a24d;
-  --line:#26262f;
-  --text:#eaeaea;
-  --muted:#a1a1aa;
+/* ORDER FORM */
+.order-box{
+max-width:480px;
+margin:0 auto;
+background:#071a1a;
+padding:25px;
+border-radius:20px;
+border:1px solid #00ffd533;
+box-shadow:0 0 30px #00ffd522
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,Arial;}
+.order-box label{
+display:block;
+font-size:11px;
+margin:12px 0 6px;
+color:#8fa
+}
+.order-box input,
+.order-box select,
+.order-box textarea{
+width:100%;
+padding:10px 12px;
+border-radius:12px;
+border:1px solid #00ffd533;
+background:#050b10;
+color:#cfd8dc;
+font-size:12px;
+outline:none
+}
+.order-box textarea{resize:none}
+.order-box button{
+margin-top:16px;
+width:100%;
+padding:12px;
+border-radius:14px;
+border:none;
+background:#00ffd5;
+color:#001;
+font-weight:600;
+font-size:13px;
+cursor:pointer;
+box-shadow:0 0 20px #00ffd5;
+transition:.3s
+}
+.order-box button:hover{
+transform:translateY(-2px);
+box-shadow:0 0 30px #00ffd5
+}
+*{box-sizing:border-box;font-family:'Orbitron',sans-serif}
+/* MINI PRICE BOX */
+.mini-price{
+max-width:900px;
+margin:30px auto 0;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px
+.progress-wrap{
+max-width:700px;
+margin:30px auto;
+}
+.progress-bar{
+height:8px;
+background:#022;
+border-radius:10px;
+overflow:hidden;
+border:1px solid #00ffd533
+}
+.progress-fill{
+height:100%;
+width:72%;
+background:#00ffd5;
+box-shadow:0 0 20px #00ffd5;
+animation:load 2s
+}
+@keyframes load{
+from{width:0}
+}
+.progress-text{
+font-size:11px;
+margin-top:6px;
+color:#8fa
+}
+/* ===== MINI PRICE LIST ===== */
+.mini-price{
+max-width:900px;
+margin:35px auto 0;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px
+}
+.mini-card{
+position:relative;
+background:#050b10;
+border:1px solid #00ffd533;
+border-radius:16px;
+padding:20px;
+box-shadow:0 0 20px #00ffd522;
+transition:.3s
+}
+.mini-card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 35px #00ffd5
+}
+.mini-card h4{
+margin:0 0 6px;
+font-size:14px;
+color:#00ffd5
+}
+.mini-price-tag{
+font-size:22px;
+color:#cffffa;
+margin-bottom:10px
+}
+.mini-price-tag span{
+font-size:12px;
+color:#8fa
+}
+.mini-card ul{
+padding-left:16px;
+font-size:12px;
+line-height:1.6
+}
+.badge{
+position:absolute;
+top:-10px;
+right:-10px;
+background:#00ffd5;
+color:#003;
+font-size:10px;
+padding:4px 8px;
+border-radius:10px;
+box-shadow:0 0 15px #00ffd5
+}
+.mini-card a{
+display:block;
+margin-top:12px;
+text-align:center;
+font-size:12px;
+padding:8px;
+border-radius:14px;
+text-decoration:none;
+color:#00ffd5;
+border:1px solid #00ffd5;
+transition:.3s
+}
+.mini-card a:hover{
+background:#00ffd5;
+color:#003
+}
+
+/* ===== FAQ ===== */
+.faq{
+max-width:900px;
+margin:40px auto 0
+}
+.faq-item{
+background:#071a1a;
+border:1px solid #00ffd533;
+border-radius:16px;
+padding:16px;
+margin-bottom:12px;
+box-shadow:0 0 20px #00ffd522;
+font-size:12px
+}
+.faq-item span{
+color:#00ffd5;
+font-weight:600
+}
+}
+.mini-card{
+background:#050b10;
+border:1px solid #00ffd533;
+border-radius:16px;
+padding:20px;
+box-shadow:0 0 20px #00ffd522;
+transition:.3s
+}
+.mini-card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 30px #00ffd5
+}
+.mini-card h4{
+margin:0 0 8px;
+font-size:14px;
+color:#00ffd5
+}
+.mini-price-tag{
+font-size:22px;
+color:#cffffa;
+margin-bottom:10px
+}
+.mini-price-tag span{
+font-size:12px;
+color:#8fa
+}
+.mini-card ul{
+padding-left:16px;
+font-size:12px;
+line-height:1.6
+}
 body{
-  background:
-    radial-gradient(circle at 20% 20%, rgba(201,162,77,.08), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(201,162,77,.05), transparent 40%),
-    var(--bg);
-  color:var(--text);
-  letter-spacing:.2px;
-  overflow-x:hidden;
+margin:0;
+background:#050b10;
+color:#cfd8dc;
+overflow-x:hidden
 }
-/* CLICK GLOW */
-.click-glow{
-  position:fixed;width:12px;height:12px;
-  border-radius:50%;
-  pointer-events:none;
-  background:rgba(201,162,77,.6);
-  box-shadow:0 0 40px rgba(201,162,77,.8);
-  transform:translate(-50%,-50%);
-  animation:fadeGlow .6s ease forwards;
-  z-index:1000;
+
+/* GRID BG */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(#00ffd522 1px,transparent 1px),
+linear-gradient(90deg,#00ffd522 1px,transparent 1px);
+background-size:50px 50px;
+opacity:.25;
+z-index:-1
 }
-@keyframes fadeGlow{from{opacity:1}to{opacity:0}}
 
-/* GLOW ICON */
-.glow{display:inline-block;animation:blink 1.2s infinite alternate;}
-@keyframes blink{0%{filter:drop-shadow(0 0 2px #c9a24d);}50%{filter:drop-shadow(0 0 12px #f5d07a);}100%{filter:drop-shadow(0 0 2px #c9a24d);}}
-.skill img{filter:drop-shadow(0 0 8px rgba(201,162,77,.7));animation:blink 1.5s infinite alternate;}
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;left:0;width:100%;
+background:#050b10;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 18px;
+z-index:999;
+box-shadow:0 0 20px #00ffd533
+}
+.logo{color:#00ffd5;font-weight:600}
+.nav-links a{
+margin-left:14px;
+color:#cfd8dc;
+font-size:13px;
+text-decoration:none
+}
+.nav-links a:hover{color:#00ffd5}
 
-/* HEADER */
-header{padding:60px 20px;text-align:center;}
-header h1{font-size:30px;color:var(--accent);}
-header p{margin-top:10px;font-size:14px;color:var(--muted);}
+}
+header h1{
+margin:0;
+font-size:30px;
+letter-spacing:2px;
+color:#001;
+position:relative
+}
+.glitch::after{
+content:attr(data-text);
+position:absolute;
+left:2px;top:2px;
+color:#00ffd5;
+opacity:.35;
+animation:glitch 3s infinite
+}
+@keyframes glitch{
+0%{transform:none}
+20%{transform:translate(-1px,1px)}
+40%{transform:translate(1px,-1px)}
+60%{transform:none}
+}
+.hero-typed{
+margin-top:14px;
+font-size:13px;
+color:#002;
+min-height:18px
+}
+
+/* STATUS BAR */
+.status-bar{
+margin:20px auto 0;
+display:inline-flex;
+gap:14px;
+align-items:center;
+padding:8px 16px;
+border-radius:20px;
+background:#050b10;
+border:1px solid #00ffd5;
+box-shadow:0 0 15px #00ffd5
+}
+.status-dot{
+width:8px;height:8px;
+border-radius:50%;
+background:#00ff88;
+box-shadow:0 0 10px #00ff88;
+animation:pulse 1.5s infinite
+}
+@keyframes pulse{
+0%{opacity:1}
+50%{opacity:.4}
+100%{opacity:1}
+}
+.status-bar span{font-size:11px;color:#b2dfdb}
 
 /* SECTION */
-.section{max-width:1080px;margin:50px auto;padding:0 20px;}
-.section h2{font-size:20px;margin-bottom:18px;color:var(--accent);}
+section{padding:45px 20px}
+.section-title{
+text-align:center;
+color:#00ffd5;
+margin-bottom:25px;
+letter-spacing:1px
 
-/* CARD */
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:.3s;}
-.card:hover{box-shadow:0 0 25px rgba(201,162,77,.25);}
+}
+.section-title::after{
+content:"";
+display:block;
+width:40px;
+height:2px;
+background:#00ffd5;
+margin:8px auto 0
+}
+.reveal{opacity:0;transform:translateY(35px);transition:.6s}
+.reveal.show{opacity:1;transform:none}
 
-/* GRID */
-.jasa,.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+/* FEATURED */
+.featured{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+.feature-card{
+background:#071a1a;
+padding:20px;
+border-radius:18px;
+border:1px solid #00ffd533;
+box-shadow:0 0 25px #00ffd522;
+font-size:12px
+}
+.feature-card h4{
+margin:0 0 8px;
+color:#00ffd5;
+font-size:13px
+}
 
-/* SKILL */
-.skill{margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.skill b{font-size:13px;}
-.skill-bar{height:8px;background:#1b1b22;border-radius:10px;overflow:hidden;margin-top:6px;}
-.skill-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#f5d07a);transition:1.5s;}
+/* SKILLS */
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto
+}
+.skill-box{
+background:#050b10;
+border:1px solid #00ffd533;
+border-radius:18px;
+padding:18px 10px;
+text-align:center;
+box-shadow:0 0 25px #00ffd522;
+transition:.3s
+}
+.skill-box:hover{
+transform:translateY(-6px);
+box-shadow:0 0 35px #00ffd5
+}
+.skill-box img{
+width:38px;
+height:38px;
+filter:drop-shadow(0 0 6px #00ffd5)
+}
+.skill-box span{
+display:block;
+margin-top:10px;
+font-size:11px;
+color:#cfd8dc
+}
 
-/* PACKAGE */
-.package h3{font-size:16px}
-.price{font-size:22px;margin:10px 0;}
-.small{font-size:12px;color:var(--muted);}
+/* PRICING */
+.pricing-list{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto
+}
+.pricing-card{
+background:#071a1a;
+border:1px solid #00ffd533;
+border-radius:20px;
+padding:24px;
+box-shadow:0 0 30px #00ffd522;
+transition:.3s
+}
+.pricing-card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 40px #00ffd5
+}
+.pricing-card h3{
+margin:0 0 8px;
+color:#00ffd5;
+font-size:15px
+}
+.price{
+font-size:26px;
+color:#cffffa;
+margin:10px 0
+}
+.price span{font-size:12px;color:#8fa}
 
-/* PAYMENT */
-.pay{display:flex;justify-content:center;gap:16px;margin-top:10px;}
-.pay img{width:40px;filter:drop-shadow(0 0 8px rgba(201,162,77,.4));}
+/* STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px
+}
+.stat{
+background:#071a1a;
+padding:25px;
+border-radius:18px;
+text-align:center;
+border:1px solid #00ffd533;
+box-shadow:0 0 25px #00ffd522
+}
+.stat h2{margin:0;font-size:26px;color:#00ffd5}
+.stat span{font-size:12px;color:#8fa}
 
-/* WELCOME TEXT */
-.welcome{font-size:12px;color:var(--muted);line-height:1.8;max-width:760px;margin:auto;text-align:center;}
+/* TIMELINE */
+.timeline-progress{
+max-width:700px;
+margin:40px auto 0;
+position:relative
+}
+.timeline-line{
+position:absolute;
+left:13px;
+top:0;
+width:2px;
+height:100%;
+background:#00ffd533
+}
+.timeline-line-fill{
+position:absolute;
+left:13px;
+top:0;
+width:2px;
+height:0;
+background:#00ffd5;
+box-shadow:0 0 20px #00ffd5;
+transition:height 1s ease
+}
+.timeline-step{
+display:flex;
+gap:18px;
+margin-bottom:35px
+}
+.timeline-dot{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#050b10;
+border:2px solid #00ffd533;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+color:#00ffd5;
+box-shadow:0 0 10px #00ffd533
+}
 
-/* FAQ */
-.faq{border-bottom:1px solid var(--line);padding:12px 0;cursor:pointer;}
-.faq b{font-size:13px;}
-.faq p{display:none;margin-top:6px;font-size:12px;color:var(--muted);}
-.faq.active p{display:block;}
+/* CHAT */
+.chat-float{
+position:fixed;
+bottom:20px;
+right:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:999
+}
+.chat-float a{
+width:52px;height:52px;
+background:#050b10;
+border:1px solid #00ffd5;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+box-shadow:0 0 20px #00ffd5
+}
+.chat-float img{
+width:26px;
+filter:drop-shadow(0 0 6px #00ffd5)
+}
 
-/* PROGRESS */
-.progress-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;}
-.progress-bar{height:8px;background:#1b1b22;border-radius:10px;overflow:hidden;margin:10px 0;}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#f5d07a);transition:2s;}
-
-/* PROFILE */
-.profile-dev{text-align:center}
-.profile-dev h2{font-size:26px}
-.profile-dev p{max-width:720px;margin:12px auto;font-size:14px;color:var(--muted);}
-
-/* BUTTON */
-.order-btn{display:inline-block;margin-top:20px;padding:12px 32px;background:var(--accent);color:#111;border-radius:40px;text-decoration:none;font-weight:600;transition:.3s;}
-.order-btn:hover{transform:scale(1.05)}
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+font-size:11px;
+color:#8fa
+}
 </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Forum Jasa SA-MP Developer <img src="images/flash.png" class="glow" alt="flash"></h1>
-  <p>Clean System • Long-Term Use • Trusted Progress</p>
+<nav class="navbar">
+<div class="logo">Marshal Dev</div>
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#skills">Skills</a>
+<a href="#services">Services</a>
+</div>
+</nav>
+
+<header id="home">
+<h1 class="glitch" data-text=""></h1>
+<div class="hero-typed" id="typed"></div>
+
+<div class="status-bar">
+<div class="status-dot"></div>
+<span>Available for new projects • Response &lt; 1 hour</span>
+
+</div>
+
+<!-- VERIFIED BADGE -->
+<div style="margin-top:10px;font-size:11px;color:#00ffd5;opacity:.8">
+✔ Verified SA:MP Developer
+</div>
+
+<!-- AVAILABILITY -->
+<div style="margin-top:6px;font-size:11px;color:#8fa">
+✔  Open for Hire — Limited Slot
+</div>
 </header>
 
-<section class="section">
-  <h2>️♦ Jasa Unggulan</h2>
-  <div class="jasa" id="jasaList"></div>
+<section class="reveal">
+<div class="featured">
+<div class="feature-card"><h4>RP System Development</h4>Custom systems tailored for serious servers.</div>
+<div class="feature-card"><h4>Bug Fix & Maintenance</h4>Clean fixes without breaking core logic.</div>
+<div class="feature-card"><h4>Server Optimization</h4>Performance tuning & stability improvement.</div>
+</div>
 </section>
 
-<section class="section">
-    <h2>♦ Skill</h2>
-  <div class="skill">
-    <img src="images/html.png" alt="HTML Logo"><b>HTML</b>
-    <div class="skill-bar"><div class="skill-fill" data-skill="90"></div></div>
-  </div>
-  <div class="skill">
-    <img src="images/css.png" alt="CSS Logo"><b>CSS</b>
-    <div class="skill-bar"><div class="skill-fill" data-skill="85"></div></div>
-  </div>
-  <div class="skill">
-    <img src="images/js.png" alt="JS Logo"><b>JavaScript</b>
-    <div class="skill-bar"><div class="skill-fill" data-skill="75"></div></div>
-  </div>
-  <div class="skill">
-    <img src="images/python.png" alt="Python Logo"><b>Python</b>
-    <div class="skill-bar"><div class="skill-fill" data-skill="70"></div></div>
-  </div>
+<!-- WHY CHOOSE ME -->
+<section class="reveal">
+<h2 class="section-title">Why Choose Me</h2>
+<div class="featured">
+<div class="feature-card">✔ Clean & Structured Code</div>
+<div class="feature-card">✔ No Memory Leak</div>
+<div class="feature-card">✔ Long-Term Support</div>
+</div>
 </section>
 
-<section class="section">
-  <h2>♦ Paket Jasa</h2>
-  <div class="packages">
-    <div class="card"><img src="images/basic.png" alt="Basic Icon"><h3>Basic</h3><div class="price">Rp300K</div><div class="small">Script basic + support</div></div>
-    <div class="card"><img src="images/standard.png" alt="Standard Icon"><h3>Standard</h3><div class="price">Rp800K</div><div class="small">RP + Mapping</div></div>
-    <div class="card"><img src="images/premium.png" alt="Premium Icon"><h3>Premium</h3><div class="price">Rp1.5JT</div><div class="small">Full custom</div></div>
-  </div>
+<section class="reveal" id="skills">
+<h2 class="section-title">Skill yang Gua Kuasai</h2>
+<div class="skills-grid">
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/html5.svg"><span>HTML</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/css3.svg"><span>CSS</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/javascript.svg"><span>JavaScript</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/php.svg"><span>PHP</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/python.svg"><span>Python</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/react.svg"><span>React</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/angular.svg"><span>Angular</span></div>
+<div class="skill-box"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wordpress.svg"><span>WordPress</span></div>
+</div>
 </section>
-
-<section class="section">
-  <h2>❓ Pertanyaan Umum</h2>
-  <div class="faq"><b>Berapa lama pengerjaan?</b><p>3–14 hari tergantung scope.</p></div>
-  <div class="faq"><b>Bisa custom?</b><p>Bisa full sesuai request.</p></div>
-  <div class="faq"><b>Aman?</b><p>Progress transparan & testing.</p></div>
+<section class="cta reveal">
+<h2 style="color:#00ffd5;margin-bottom:10px">Ready Build Your Server?</h2>
+<p style="font-size:12px;margin-bottom:16px">
+Diskusi gratis sebelum order, no pressure.
+</p>
+<a href="https://wa.me/628XXXXXXXXXX" 
+style="display:inline-block;padding:10px 24px;border-radius:20px;
+border:1px solid #00ffd5;color:#00ffd5;text-decoration:none">
+Chat Sekarang!
+</a>
 </section>
+<footer>
+© 2026 Marshal Dev SA:MP Developer  
+<div style="margin-top:6px;opacity:.7">
+Payment via Dana / OVO / Bank Transfer
+</div>
+</footer>
 
-<section class="section">
-  <h2>⏱ Status Pengerjaan</h2>
-  <div class="progress-box">
-    <p>Status: <b id="status">In Progress</b></p>
-    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
-    <p>Waktu ngoding: <b id="timer">0</b> menit</p>
-  </div>
-</section>
-
-<section class="section profile-dev">
-  <h2>Andra Lutfiansyah Marshal</h2>
-  <p>Developer fokus sistem stabil & bisa dipakai lama, bukan sekadar jalan.</p>
-  <a class="order-btn" href="https://wa.me/62XXXXXXXXXX">Order Sekarang</a>
-</section>
-
-<section class="section">
-  <div class="card welcome">
-    Selamat datang. Di sini bukan janji manis, tapi sistem yang bisa dipakai lama, dikembangin, & rapi. Setiap baris kode dibuat untuk stabil & siap dikembangkan.
-  </div>
-</section>
-
-<section class="section">
-  <h2>♦ Cara Gue Kerja</h2>
-  <div class="card">
-    <p>• Diskusi tanpa tekanan</p>
-    <p>• Scope jelas sebelum coding</p>
-    <p>• Progress bisa dicek</p>
-    <p>• Hasil rapi & bisa dikembangkan</p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>✴️ Metode Pembayaran</h2>
-  <div class="pay">
-    <img src="images/qris.png" alt="QRIS">
-    <img src="images/bca.png" alt="BCA">
-    <img src="images/gopay.png" alt="GoPay">
-  </div>
-</section>
-
-<section class="section">
-  <div class="card" style="border:1px solid var(--accent)">
-    <p>⚠❗ Tidak menerima project kalau belum jelas. Clean logic & testing.</p>
-  </div>
-</section>
-
-<section class="section" style="text-align:center">
-  <p style="font-size:14px;color:var(--muted);line-height:1.7">
-    Kalau lu nyari developer yang bisa diajak mikir, bukan cuma ngetik kode — kita satu frekuensi.
-  </p>
-  <a class="order-btn" href="https://wa.me/62XXXXXXXXXX">Mulai Diskusi</a>
-</section>
-
-<footer>© 2026 Andra Lutfiansyah Marshal • SA-MP Developer</footer>
+<div class="chat-float">
+<a href="https://wa.me/628XXXXXXXXXX" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg">
+</a>
+<a href="https://discord.gg/XXXXXXX" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
+</a>
+</div>
 
 <script>
-const jasaData=[
-  {title:"Script Roleplay",desc:"System RP clean & scalable"},
-  {title:"Mapping Custom",desc:"Interior & exterior detail"},
-  {title:"Discord Bot",desc:"Bot komunitas SA-MP"}
+document.querySelectorAll('[data-count]').forEach(el=>{
+let t=+el.dataset.count,c=0;
+let i=setInterval(()=>{
+c++;el.textContent=c+(t>24?'+':'');
+if(c>=t)clearInterval(i);
+},30);
+});
+
+window.addEventListener('scroll',()=>{
+document.querySelectorAll('.reveal').forEach(r=>{
+if(r.getBoundingClientRect().top<innerHeight-60)
+r.classList.add('show');
+});
+});
+
+const texts=[
+"SA:MP Developer",
+"RP Systems • Bug Fixing • Optimization",
+"Trusted by Server Owners"
 ];
-const jasaList=document.getElementById("jasaList");
-jasaData.forEach(j=>{
-  jasaList.innerHTML+=`<div class="card"><h3>${j.title}</h3><p>${j.desc}</p></div>`;
-});
-
-// SKILL
-document.querySelectorAll(".skill-fill").forEach(el=>{
-  setTimeout(()=>el.style.width=el.dataset.skill+"%",400);
-});
-
-// FAQ
-document.querySelectorAll(".faq").forEach(f=>{f.onclick=()=>f.classList.toggle("active");});
-
-// PROGRESS
-let time=0;
-const timerInterval=setInterval(()=>{
-  time++;
-  document.getElementById("timer").innerText=time;
-  document.getElementById("progress").style.width=Math.min(time,100)+"%";
-  if(time>=100){document.getElementById("status").innerText="Completed"; clearInterval(timerInterval);}
-},200);
-
-// CLICK GLOW
-document.addEventListener("click",e=>{
-  const glow=document.createElement("div");
-  glow.className="click-glow";
-  glow.style.left=e.clientX+"px";
-  glow.style.top=e.clientY+"px";
-  document.body.appendChild(glow);
-  setTimeout(()=>glow.remove(),600);
-});
+let ti=0,tj=0;
+setInterval(()=>{
+document.getElementById("typed").textContent=texts[ti].slice(0,++tj);
+if(tj===texts[ti].length){
+setTimeout(()=>{tj=0;ti=(ti+1)%texts.length},1500);
+}
+},70);
 </script>
 
 </body>
 </html>
+<section class="reveal" id="order">
+  <h2 class="section-title">Order Developer</h2>
+
+  <div class="order-box">
+    <form id="orderForm">
+      <label>Nama (opsional)</label>
+      <input type="text" id="name" placeholder="Nama kamu">
+
+      <label>Pilih Jasa</label>
+      <select id="service" required>
+        <option value="">-- Pilih Jasa --</option>
+        <option value="Fix Bug">Fix Bug</option>
+        <option value="Developer Harian">Developer Harian</option>
+        <option value="Developer Mingguan">Developer Mingguan</option>
+        <option value="Developer Bulanan">Developer Bulanan</option>
+      </select>
+
+      <label>Keterangan</label>
+      <textarea id="note" rows="4" placeholder="Contoh: Fix inventory, optimize server, dll"></textarea>
+
+      <button type="submit">Kirim ke WhatsApp</button>
+    </form>
+  </div>
+</section>
+<section class="reveal">
+<h2 class="section-title">List Harga Developer</h2>
+<div class="status-bar">
+<div class="status-dot"></div>
+<span>Currently Working on RP Server</span>
+</div>
+<div class="mini-price">
+
+<div class="mini-card">
+<h4>Fix Bug</h4>
+<div class="mini-price-tag">Rp 75K <span>/ case</span></div>
+<ul>
+<li>Bug script / logic</li>
+<li>Fix tanpa rusak sistem</li>
+<li>Cocok untuk server aktif</li>
+</ul>
+</div>
+
+<div class="mini-card">
+<h4>Developer Harian</h4>
+<div class="mini-price-tag">Rp 150K <span>/ hari</span></div>
+<ul>
+<li>Edit fitur</li>
+<li>Tambah sistem kecil</li>
+<li>Fast response</li>
+</ul>
+</div>
+
+<div class="mini-card">
+<h4>Developer Mingguan</h4>
+<div class="mini-price-tag">Rp 900K <span>/ minggu</span></div>
+<ul>
+<li>Develop RP system</li>
+<li>Optimasi server</li>
+<li>Maintenance rutin</li>
+</ul>
+</div>
+
+<div class="mini-card">
+<h4>Developer Bulanan</h4>
+<div class="mini-price-tag">Rp 3.2 JT <span>/ bulan</span></div>
+<ul>
+<li>Full development</li>
+<li>Custom request</li>
+<li>Prioritas & support</li>
+</ul>
+</div>
+<section class="reveal">
+<h2 class="section-title">FAQ</h2>
+<div class="faq">
+
+<div class="faq-item">
+<span>Berapa lama pengerjaan?</span><br>
+Tergantung kompleksitas, rata-rata 1–7 hari.
+</div>
+
+<div class="faq-item">
+<span>Bisa revisi?</span><br>
+Bisa, selama masih dalam scope project.
+</div>
+
+<div class="faq-item">
+<span>Support setelah project?</span><br>
+Yes, support & maintenance sesuai paket.
+</div>
+<div class="progress-wrap">
+<div class="progress-bar">
+<div class="progress-fill"></div>
+</div>
+<div class="progress-text">Current Project Progress — 72%</div>
+</div>
+
+</div>
+</section>
+</div>
+</section>
+<div class="status-bar" style="margin-top:14px">
+<span>▪️Trusted by RP Server Owners</span>
+<span>▪️Clean Code</span>
+<span>▪️No Core Damage</span>
+</div>
+
